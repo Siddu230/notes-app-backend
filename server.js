@@ -1,13 +1,18 @@
 const express = require('express');
 const cors = require('cors');
 const app = express();
-const port = process.env.PORT || 5000; // Use environment variable or default to 5000
+const port = process.env.PORT || 5000;
 
 app.use(cors());
 app.use(express.json());
 
 let notes = [];
 let idCounter = 1;
+
+// Add a route for the root path
+app.get('/', (req, res) => {
+  res.send('Notes App Backend Running on Render');
+});
 
 // GET /notes: Retrieve all notes
 app.get('/notes', (req, res) => {
